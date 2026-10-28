@@ -1,0 +1,62 @@
+<svg width="600" height="180" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- EPMAPS_Tracker - identidad oficial de la app (fuente de verdad) -->
+  <!-- Paleta: #005AA9 primario, #E63946 acento, #FFFFFF luz, #333333 texto -->
+
+  <!-- Símbolo -->
+  <g transform="translate(20,20)">
+
+    <!-- Pin -->
+    <path d="M60 0
+             C27 0 0 27 0 60
+             C0 105 60 140 60 140
+             C60 140 120 105 120 60
+             C120 27 93 0 60 0Z"
+             fill="#005AA9"/>
+
+    <!-- Gota -->
+    <path d="M60 28
+             C44 48 35 62 35 77
+             C35 93 46 104 60 104
+             C74 104 85 93 85 77
+             C85 62 76 48 60 28Z"
+             fill="#FFFFFF"/>
+
+    <!-- Tracker -->
+    <circle cx="60" cy="77" r="10" fill="#E63946"/>
+
+  </g>
+
+  <!-- Texto -->
+  <g transform="translate(170,65)">
+    <text
+      x="0"
+      y="0"
+      font-family="Segoe UI, Arial, sans-serif"
+      font-size="42"
+      font-weight="700"
+      fill="#005AA9">
+      EPMAPS
+    </text>
+
+    <text
+      x="0"
+      y="50"
+      font-family="Segoe UI, Arial, sans-serif"
+      font-size="30"
+      font-weight="400"
+      fill="#333333">
+      Tracker
+    </text>
+
+    <!-- Línea distintiva -->
+    <rect
+      x="0"
+      y="68"
+      width="130"
+      height="5"
+      rx="2.5"
+      fill="#E63946"/>
+  </g>
+
+</svg>

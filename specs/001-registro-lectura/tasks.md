@@ -2,7 +2,9 @@
 
 Cada tarea se hace en una sesión nueva (`/new`). Marca `[x]` solo cuando su criterio de aceptación se cumple.
 
-- [ ] **T-01 · Proyecto base.** Crear el proyecto con Expo SDK 57 y TypeScript estricto. Commit de ADR y spec primero.
+> Previo a las tareas de interfaz (T-05 en adelante): completar `specs/002-diseno-visual/tasks.md` (sistema de diseño, agente `frontend-designer` y skill `glassmorphism-ui`).
+
+- [x] **T-01 · Proyecto base.** Crear el proyecto con Expo SDK 57 y TypeScript estricto. Commit de ADR y spec primero.
   - Hecho cuando: `npx expo start` funciona y `docs/adr/` ya está en el historial antes de instalar dependencias.
 
 - [ ] **T-02 · Esquema SQLite.** Crear tablas `medidores` y `lecturas` con la restricción `UNIQUE(codigo_medidor, mes)`. (RF-10, ADR-001)
