@@ -39,8 +39,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "94ee3839-2db7-48bc-a862-3cba740333a8"
+        "projectId": "ffb6290c-6d74-42d4-9c3b-03d769f3bd9e"
       }
-    }
+    },
+    "owner": "marycode22"
   }
 }
