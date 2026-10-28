@@ -21,8 +21,12 @@
     "plugins": [
       "expo-router",
       "expo-status-bar",
-      "expo-sqlite"
+      "expo-sqlite",
+      ["expo-image-picker", {
+        "cameraPermission": "Necesitamos la cámara para fotografiar el medidor como respaldo de la lectura."
+      }]
     ],
+    
     "experiments": {
       "typedRoutes": true
     }
