@@ -11,6 +11,7 @@ import { StateView } from "../src/components/StateView";
 import { StatusBadge } from "../src/components/StatusBadge";
 import { useAuth } from "../src/store/auth";
 import { theme } from "../src/constants/theme";
+import { fmtFecha } from "../src/utils/fmt";
 
 export default function Index() {
   const { user, logout } = useAuth();
@@ -44,17 +45,37 @@ export default function Index() {
     <View style={{ flex: 1, backgroundColor: theme.colors.bg, padding: theme.spacing[4] }}>
       <StatusBadge />
       <GlassView>
-        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: theme.spacing[3] }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: theme.spacing[3],
+          }}
+        >
           <Text style={{ color: theme.colors.textOnDark, fontSize: theme.typography.title.fontSize }}>
             Consultar medidor
           </Text>
           <GlassButton title="Salir" variant="ghost" onPress={handleLogout} />
         </View>
-        <Text style={{ color: theme.colors.textOnDarkSecondary, fontSize: theme.typography.caption.fontSize, marginBottom: theme.spacing[3] }}>
+        <Text
+          style={{
+            color: theme.colors.textOnDarkSecondary,
+            fontSize: theme.typography.caption.fontSize,
+            marginBottom: theme.spacing[3],
+          }}
+        >
           Sesión: {user}
         </Text>
-        <GlassInput placeholder="MED-123456" value={codigo} onChangeText={setCodigo} autoCapitalize="characters" />
-        {error ? <Text style={{ color: theme.colors.accentDark, marginTop: theme.spacing[2] }}>{error}</Text> : null}
+        <GlassInput
+          placeholder="MED-123456"
+          value={codigo}
+          onChangeText={setCodigo}
+          autoCapitalize="characters"
+        />
+        {error ? (
+          <Text style={{ color: theme.colors.accentDark, marginTop: theme.spacing[2] }}>{error}</Text>
+        ) : null}
         <View style={{ height: theme.spacing[3] }} />
         <GlassButton title="Consultar" onPress={handle} />
         <View style={{ height: theme.spacing[2] }} />
@@ -70,10 +91,17 @@ export default function Index() {
             <Text style={{ color: theme.colors.textOnDark }}>Sector: {data.sector}</Text>
             <Text style={{ color: theme.colors.textOnDark }}>Cuenta: {data.cuenta}</Text>
             <Text style={{ color: theme.colors.textOnDark }}>Estado: {data.estado}</Text>
-            <Text style={{ color: theme.colors.textOnDark }}>Última lectura: {data.ultima_lectura} ({data.fecha_ultima})</Text>
-            <Text style={{ color: theme.colors.textOnDark }}>Consumo promedio: {data.consumo_promedio}</Text>
+            <Text style={{ color: theme.colors.textOnDark }}>
+              Última lectura: {data.ultima_lectura ?? "sin lectura"} ({fmtFecha(data.fecha_ultima)})
+            </Text>
+            <Text style={{ color: theme.colors.textOnDark }}>
+              Consumo promedio: {data.consumo_promedio ?? "—"}
+            </Text>
             <View style={{ height: theme.spacing[3] }} />
-            <GlassButton title="Registrar lectura" onPress={() => router.push(`/medidor/${submitted}`)} />
+            <GlassButton
+              title="Registrar lectura"
+              onPress={() => router.push(`/medidor/${submitted}`)}
+            />
           </GlassView>
         )}
       </View>

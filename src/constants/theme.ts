@@ -15,6 +15,7 @@ export const theme = {
     glassFill: "rgba(255,255,255,0.10)",
     glassBorder: "rgba(255,255,255,0.18)",
     borderStrong: "rgba(255,255,255,0.35)",
+    overlay: "rgba(0,0,0,0.78)",
   },
   spacing: [4, 8, 12, 16, 24, 32] as const,
   radius: {

@@ -19,5 +19,9 @@ export async function fetchMedidor(codigo: string) {
   if (!Array.isArray(data) || data.length === 0) {
     throw new Error("Medidor no encontrado");
   }
-  return data[0];
+  const medidor = data[0];
+  return {
+    ...medidor,
+    fecha_ultima: medidor.fecha_ultima ?? medidor.fecha_ultima_lectura ?? null,
+  };
 }

@@ -19,3 +19,10 @@ Registro de las preguntas hechas antes de escribir la spec y las respuestas eleg
 ## Pendientes de confirmar
 - Valor exacto de 8 horas para la caché: **confirmado** (27/10/2026).
 - Restricción UNIQUE sobre medidor y mes: **confirmado** (27/10/2026).
+
+## Decisiones de corrección de bugs (28/10/2026)
+
+| # | Tema | Elegido | Descartado |
+|---|---|---|---|
+| D-17 | Alcance de la corrección | Corregir los seis hallazgos de `.kiro` y auditar nuevamente el flujo relacionado, sin cambiar funcionalidades ajenas | Corregir solo una parte de los hallazgos o ampliar el alcance sin relación |
+| D-18 | Recuperación de borrador durante edición | Mostrar el diálogo solo al abrir un formulario intacto con un borrador persistido; no mostrarlo por autos guardados posteriores a cambios del usuario | Mostrar el diálogo cada vez que cambia el borrador |

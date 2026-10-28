@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git show HEAD:app/medidor/'\\[codigo\\]\\.tsx' \\| Set-Content -Encoding utf8 -LiteralPath \"\\$env:TEMP\\\\codigo-head\\.tsx\"; Get-Content \"\\$env:TEMP\\\\codigo-head\\.tsx\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

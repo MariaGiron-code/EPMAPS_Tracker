@@ -1,11 +1,16 @@
-import { Pressable, Text, PressableProps } from "react-native";
+import { Pressable, Text, PressableProps, StyleProp, ViewStyle } from "react-native";
 import { theme } from "../constants/theme";
 
 export function GlassButton({
   title,
   variant = "primary",
+  style,
   ...props
-}: PressableProps & { title: string; variant?: "primary" | "ghost" }) {
+}: PressableProps & {
+  title: string;
+  variant?: "primary" | "ghost";
+  style?: StyleProp<ViewStyle>;
+}) {
   const isPrimary = variant === "primary";
   return (
     <Pressable
@@ -22,10 +27,20 @@ export function GlassButton({
           justifyContent: "center",
           opacity: pressed ? 0.85 : 1,
         },
+        style,
       ]}
       {...props}
     >
-      <Text style={{ color: theme.colors.textOnDark, fontSize: theme.typography.body.fontSize, fontWeight: "600" }}>
+      <Text
+        style={{
+          color: theme.colors.textOnDark,
+          fontSize: theme.typography.body.fontSize,
+          fontWeight: "600",
+          textAlign: "center",
+        }}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+      >
         {title}
       </Text>
     </Pressable>

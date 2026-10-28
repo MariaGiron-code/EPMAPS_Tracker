@@ -1,5 +1,11 @@
 import { openDb, initDb } from "../db/schema";
 
+function mesActual(): string {
+  const ahora = new Date();
+  const mes = String(ahora.getMonth() + 1).padStart(2, "0");
+  return `${ahora.getFullYear()}-${mes}`;
+}
+
 export function newUuid(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0;
@@ -18,7 +24,7 @@ export async function guardarLecturaPendiente(data: {
 }): Promise<{ ok: boolean; message?: string }> {
   const db = await openDb();
   await initDb(db);
-  const mes = new Date().toISOString().slice(0, 7);
+  const mes = mesActual();
   try {
     await db.runAsync(
       `INSERT INTO lecturas (uuid, codigo_medidor, mes, lectura, estado_medidor, motivo, descripcion_dano, foto_ruta, estado_envio, creado_en)
@@ -27,10 +33,11 @@ export async function guardarLecturaPendiente(data: {
     );
     return { ok: true };
   } catch (e: any) {
-    if (String(e?.message ?? e).includes("UNIQUE")) {
-      return { ok: false, message: "Ya existe una lectura de este medidor en este mes." };
+    const message = String(e?.message ?? e);
+    if (message.includes("UNIQUE")) {
+      return { ok: false, message: `Ya existe una lectura local para ${data.codigo} en ${mes}.` };
     }
-    return { ok: false, message: String(e?.message ?? e) };
+    return { ok: false, message };
   }
 }
 

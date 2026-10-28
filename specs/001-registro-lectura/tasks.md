@@ -63,5 +63,6 @@ Cada tarea se hace en una sesión nueva (`/new`). Marca `[x]` solo cuando su cri
   - Hecho cuando: al reabrir la app las lecturas en `enviando` se reintentan.
   - Implementación: `resetEnviando()` importada en `app/_layout.tsx` y llamada en el `useEffect` de arranque junto a `init()`. Las lecturas atascadas en `enviando` vuelven a `pendiente` antes de que `useSync` arranque NetInfo. Typecheck y lint pasan (1 warning preexistente en `watch()`).
 
-- [ ] **T-18 · Edición de pendientes y bloqueo de enviadas.** (AUD-100, AUD-101, RF-10)
+- [x] **T-18 · Edición de pendientes y bloqueo de enviadas.** (AUD-100, AUD-101, RF-10)
   - Hecho cuando: una pendiente se corrige y una enviada no ofrece editar.
+  - Implementación: `listarTodas()` agregada a `src/sync/envio.ts` para mostrar todos los registros (pendientes + enviadas). `app/pendientes.tsx` renombra el título a "Todas las lecturas", muestra badge de color por estado (`Pendiente` / `Enviando…` / `Enviada ✓`), renderiza botones "Editar" y "Enviar" solo cuando `estado_envio === 'pendiente'`, y muestra texto informativo "Lectura enviada · no editable" para el resto. Typecheck y lint pasan (1 warning preexistente en `watch()`).

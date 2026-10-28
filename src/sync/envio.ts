@@ -83,6 +83,15 @@ export async function resetEnviando(): Promise<void> {
   await initDb(db);
   await db.runAsync("UPDATE lecturas SET estado_envio = 'pendiente' WHERE estado_envio = 'enviando'");
 }
+
+export async function listarTodas(): Promise<LecturaRow[]> {
+  const db = await openDb();
+  await initDb(db);
+  return db.getAllAsync<LecturaRow>(
+    "SELECT * FROM lecturas ORDER BY creado_en DESC"
+  );
+}
+
 export async function enviarPendientes(): Promise<number> {
   const pendientes = await listarPendientes();
   let enviadas = 0;
