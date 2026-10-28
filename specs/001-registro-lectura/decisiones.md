@@ -17,5 +17,5 @@ Registro de las preguntas hechas antes de escribir la spec y las respuestas eleg
 | D-11 | Consumo sin lectura anterior | No calcular consumo ni advertir | Usar cero como lectura anterior |
 
 ## Pendientes de confirmar
-- Valor exacto de 8 horas para la caché (propuesta).
-- Restricción UNIQUE sobre medidor y mes (propuesta).
+- Valor exacto de 8 horas para la caché: **confirmado** (27/10/2026).
+- Restricción UNIQUE sobre medidor y mes: **confirmado** (27/10/2026).
