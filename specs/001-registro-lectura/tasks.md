@@ -42,3 +42,22 @@ Cada tarea se hace en una sesión nueva (`/new`). Marca `[x]` solo cuando su cri
 - [x] **T-12 · Verificación final.** Ejecutar `sdd-validate` contra la spec, revisión del `reviewer` sobre ADR-007 y ADR-008, y generar el APK.
   - Hecho cuando: todos los RF tienen su criterio comprobado y el APK se instala en el dispositivo.
   - Validación (27/10/2026): `npx tsc --noEmit` sin errores; `npx expo lint` 0 errores (1 warning preexistente en `app/medidor/[codigo].tsx:28` por `watch()`). TD-05 reporta RF-D-01 a RF-D-05 = Cumple. RF-01..RF-10 cubiertos por T-05..T-11. APK pendiente de build.
+
+- [x] **T-13 · Pantalla de pendientes.** Crear `app/pendientes.tsx` con listado, edición y envío. (AUD-04, RF-10)
+  - Hecho cuando: pantalla alcanzable y lista pendientes con editar/enviar.
+  - Implementación: `app/pendientes.tsx` con FlatList, modal de edición, acción enviar (enviarUna), StatusBadge. Navegación desde index ("Ver pendientes") y registro en _layout. Typecheck y lint pasan (1 warning preexistente en watch()).
+
+- [ ] **T-14 · Caché persistente de TanStack Query.** Persister AsyncStorage. (AUD-31, RF-03, ADR-002)
+  - Hecho cuando: consulta del mismo medidor con modo avión tras reinicio muestra datos.
+
+- [ ] **T-15 · Lectura anterior, consumo y advertencia.** Mostrar lectura anterior, calcular consumo, advertir al triple con confirmación, sin consumo si no hay anterior. (AUD-41, AUD-42, AUD-60..AUD-63, RF-04, RF-06)
+  - Hecho cuando: formulario muestra lectura anterior y advertencia solo cuando corresponde.
+
+- [ ] **T-16 · Foto obligatoria por consumo anómalo.** Incluir consumo anómalo. (AUD-70, RF-07)
+  - Hecho cuando: con consumo anómalo la foto es obligatoria aunque el estado sea normal.
+
+- [ ] **T-17 · Reset de `enviando` al iniciar.** Volver a `pendiente`. (AUD-93, RF-09, ADR-007)
+  - Hecho cuando: al reabrir la app las lecturas en `enviando` se reintentan.
+
+- [ ] **T-18 · Edición de pendientes y bloqueo de enviadas.** (AUD-100, AUD-101, RF-10)
+  - Hecho cuando: una pendiente se corrige y una enviada no ofrece editar.

@@ -5,8 +5,7 @@ Registro de decisiones y hallazgos del proyecto. Lo consulta el agente al inicia
 ## Estado actual
 - Fase: implementación (spec 001 aprobada el 27/10/2026).
 - Sistema de diseño: spec `specs/002-diseno-visual/spec.md` aprobada y validada (TD-05 cerrada el 27/10/2026): typecheck y lint pasan, agente `frontend-designer` reporta «cumple» en RF-D-01 a RF-D-05.
-- T-11 (envío sin duplicados) completado: sync con uuid pre-check, NetInfo, StatusBadge en todas las pantallas, reset de "enviando" al iniciar. Typecheck y lint pasan (1 warning preexistente en `watch()`).
-- Siguiente tarea: T-12 (`specs/001-registro-lectura/tasks.md`) — verificación final y APK.
+- Spec `specs/003-auditoria-funcional/spec.md` clarificada y aprobada (28/10/2026): directorio renombrado (typo corregido), `spec.md` canónico creado. Auditoría de solo lectura; ejecutar con el agente `reviewer`.
 
 ## Decisiones tomadas
 - ADR-001 a ADR-008 aceptados el 27/10/2026 (ver `docs/adr/`).
@@ -17,4 +16,5 @@ Registro de decisiones y hallazgos del proyecto. Lo consulta el agente al inicia
 
 ## Pendientes conocidos
 - Confirmar que el APK se instala en el dispositivo del docente o en el emulador Android.
+- T-13 (pantalla de pendientes) completado: listado, edición y envío, StatusBadge, navegación desde index y _layout. Typecheck y lint pasan (1 warning preexistente en `watch()`). Siguiente: T-14 (caché persistente).
 - Preparar datos de prueba en MockAPI: recursos `medidores` y `lecturas`.
