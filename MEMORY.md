@@ -16,5 +16,5 @@ Registro de decisiones y hallazgos del proyecto. Lo consulta el agente al inicia
 
 ## Pendientes conocidos
 - Confirmar que el APK se instala en el dispositivo del docente o en el emulador Android.
-- T-13 (pantalla de pendientes) completado: listado, edición y envío, StatusBadge, navegación desde index y _layout. Typecheck y lint pasan (1 warning preexistente en `watch()`). Siguiente: T-14 (caché persistente).
+- T-15 y T-16 (lectura anterior, consumo, advertencia y foto obligatoria por consumo anómalo) completados en `app/medidor/[codigo].tsx`: obtiene medidor vía useQuery, calcula consumo, advertencia + confirmación al triple, foto obligatoria si anómalo o dañado. Typecheck y lint pasan (1 warning preexistente en `watch()`). Siguiente: T-17 (reset de enviando).
 - Preparar datos de prueba en MockAPI: recursos `medidores` y `lecturas`.

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import NetInfo from "@react-native-community/netinfo";
-import { enviarPendientes, contarPendientes } from "./envio";
+import { enviarPendientes, contarPendientes, resetEnviando } from "./envio";
 import { useStatus } from "../store/status";
 
 export function useSync() {
@@ -16,7 +16,10 @@ export function useSync() {
       }
     };
 
-    refreshPending();
+    (async () => {
+      await resetEnviando();
+      await refreshPending();
+    })();
 
     const unsub = NetInfo.addEventListener(async (state) => {
       const online = !!(state.isConnected && state.isInternetReachable);

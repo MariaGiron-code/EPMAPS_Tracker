@@ -78,12 +78,12 @@ export async function enviarUna(row: LecturaRow): Promise<boolean> {
   }
 }
 
-export async function enviarPendientes(): Promise<number> {
+export async function resetEnviando(): Promise<void> {
   const db = await openDb();
   await initDb(db);
-  // Recuperación tras cierre a mitad de envío (plan, paso 4)
   await db.runAsync("UPDATE lecturas SET estado_envio = 'pendiente' WHERE estado_envio = 'enviando'");
-
+}
+export async function enviarPendientes(): Promise<number> {
   const pendientes = await listarPendientes();
   let enviadas = 0;
   for (const row of pendientes) {

@@ -33,3 +33,20 @@ export async function guardarLecturaPendiente(data: {
     return { ok: false, message: String(e?.message ?? e) };
   }
 }
+
+export async function actualizarLectura(
+  uuid: string,
+  data: { estado: "normal" | "inaccesible" | "danado"; lectura?: number; motivo?: string; descripcionDano?: string; fotoRuta?: string }
+): Promise<{ ok: boolean; message?: string }> {
+  const db = await openDb();
+  await initDb(db);
+  try {
+    await db.runAsync(
+      `UPDATE lecturas SET estado_medidor = ?, lectura = ?, motivo = ?, descripcion_dano = ?, foto_ruta = ? WHERE uuid = ? AND estado_envio = 'pendiente'`,
+      [data.estado, data.lectura ?? null, data.motivo ?? null, data.descripcionDano ?? null, data.fotoRuta ?? null, uuid]
+    );
+    return { ok: true };
+  } catch (e: any) {
+    return { ok: false, message: String(e?.message ?? e) };
+  }
+}

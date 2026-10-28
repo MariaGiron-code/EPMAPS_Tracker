@@ -57,6 +57,8 @@ export default function Index() {
         {error ? <Text style={{ color: theme.colors.accentDark, marginTop: theme.spacing[2] }}>{error}</Text> : null}
         <View style={{ height: theme.spacing[3] }} />
         <GlassButton title="Consultar" onPress={handle} />
+        <View style={{ height: theme.spacing[2] }} />
+        <GlassButton title="Ver pendientes" variant="ghost" onPress={() => router.push("/pendientes")} />
       </GlassView>
 
       <View style={{ marginTop: theme.spacing[4] }}>
@@ -70,6 +72,8 @@ export default function Index() {
             <Text style={{ color: theme.colors.textOnDark }}>Estado: {data.estado}</Text>
             <Text style={{ color: theme.colors.textOnDark }}>Última lectura: {data.ultima_lectura} ({data.fecha_ultima})</Text>
             <Text style={{ color: theme.colors.textOnDark }}>Consumo promedio: {data.consumo_promedio}</Text>
+            <View style={{ height: theme.spacing[3] }} />
+            <GlassButton title="Registrar lectura" onPress={() => router.push(`/medidor/${submitted}`)} />
           </GlassView>
         )}
       </View>

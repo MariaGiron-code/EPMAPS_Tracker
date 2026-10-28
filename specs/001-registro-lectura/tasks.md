@@ -47,17 +47,21 @@ Cada tarea se hace en una sesión nueva (`/new`). Marca `[x]` solo cuando su cri
   - Hecho cuando: pantalla alcanzable y lista pendientes con editar/enviar.
   - Implementación: `app/pendientes.tsx` con FlatList, modal de edición, acción enviar (enviarUna), StatusBadge. Navegación desde index ("Ver pendientes") y registro en _layout. Typecheck y lint pasan (1 warning preexistente en watch()).
 
-- [ ] **T-14 · Caché persistente de TanStack Query.** Persister AsyncStorage. (AUD-31, RF-03, ADR-002)
+- [x] **T-14 · Caché persistente de TanStack Query.** Persister AsyncStorage. (AUD-31, RF-03, ADR-002)
   - Hecho cuando: consulta del mismo medidor con modo avión tras reinicio muestra datos.
+  - Implementación: `PersistQueryClientProvider` con `createAsyncStoragePersister` en `_layout.tsx`, `maxAge` 24h. Typecheck y lint pasan.
 
-- [ ] **T-15 · Lectura anterior, consumo y advertencia.** Mostrar lectura anterior, calcular consumo, advertir al triple con confirmación, sin consumo si no hay anterior. (AUD-41, AUD-42, AUD-60..AUD-63, RF-04, RF-06)
+- [x] **T-15 · Lectura anterior, consumo y advertencia.** Mostrar lectura anterior, calcular consumo, advertir al triple con confirmación, sin consumo si no hay anterior. (AUD-41, AUD-42, AUD-60..AUD-63, RF-04, RF-06)
   - Hecho cuando: formulario muestra lectura anterior y advertencia solo cuando corresponde.
+  - Implementación: `app/medidor/[codigo].tsx` obtiene medidor vía useQuery, muestra lectura anterior + consumo promedio, calcula consumo, muestra advertencia roja + botón de confirmación cuando supera el triple, sin consumo si no hay anterior. Typecheck y lint pasan (1 warning preexistente en `watch()`).
 
-- [ ] **T-16 · Foto obligatoria por consumo anómalo.** Incluir consumo anómalo. (AUD-70, RF-07)
+- [x] **T-16 · Foto obligatoria por consumo anómalo.** Incluir consumo anómalo. (AUD-70, RF-07)
   - Hecho cuando: con consumo anómalo la foto es obligatoria aunque el estado sea normal.
+  - Implementación: `fotoObligatoria = estado === "danado" || anomalo` en `app/medidor/[codigo].tsx`. Typecheck y lint pasan.
 
-- [ ] **T-17 · Reset de `enviando` al iniciar.** Volver a `pendiente`. (AUD-93, RF-09, ADR-007)
+- [x] **T-17 · Reset de `enviando` al iniciar.** Volver a `pendiente`. (AUD-93, RF-09, ADR-007)
   - Hecho cuando: al reabrir la app las lecturas en `enviando` se reintentan.
+  - Implementación: `resetEnviando()` importada en `app/_layout.tsx` y llamada en el `useEffect` de arranque junto a `init()`. Las lecturas atascadas en `enviando` vuelven a `pendiente` antes de que `useSync` arranque NetInfo. Typecheck y lint pasan (1 warning preexistente en `watch()`).
 
 - [ ] **T-18 · Edición de pendientes y bloqueo de enviadas.** (AUD-100, AUD-101, RF-10)
   - Hecho cuando: una pendiente se corrige y una enviada no ofrece editar.

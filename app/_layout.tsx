@@ -1,10 +1,13 @@
 import { Stack, useRouter, useSegments } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { View, ActivityIndicator } from "react-native";
-import { QueryClientProvider } from "@tanstack/react-query";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { queryClient } from "../src/api/mockapi";
 import { useAuth } from "../src/store/auth";
 import { useSync } from "../src/sync/useSync";
+import { resetEnviando } from "../src/sync/envio";
 import { theme } from "../src/constants/theme";
 
 export default function RootLayout() {
@@ -12,9 +15,11 @@ export default function RootLayout() {
   useSync();
   const segments = useSegments();
   const router = useRouter();
+  const persister = useMemo(() => createAsyncStoragePersister({ storage: AsyncStorage }), []);
 
   useEffect(() => {
     init();
+    resetEnviando().catch(() => {}); // AUD-93: cualquier lectura atascada en "enviando" vuelve a "pendiente" al arrancar
   }, [init]);
 
   useEffect(() => {
@@ -40,11 +45,12 @@ export default function RootLayout() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <PersistQueryClientProvider client={queryClient} persistOptions={{ persister, maxAge: 1000 * 60 * 60 * 24 }}>
       <Stack>
         <Stack.Screen name="index" options={{ title: "EPMAPS_Tracker" }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="pendientes" options={{ title: "Pendientes" }} />
       </Stack>
-    </QueryClientProvider>
+    </PersistQueryClientProvider>
   );
 }
