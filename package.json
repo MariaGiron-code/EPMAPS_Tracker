@@ -12,6 +12,7 @@
     "lint": "expo lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.105.0",
     "expo": "~57.0.31",
     "expo-constants": "~57.0.22",
     "expo-linking": "~57.0.13",
