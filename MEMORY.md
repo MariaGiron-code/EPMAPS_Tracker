@@ -4,9 +4,9 @@ Registro de decisiones y hallazgos del proyecto. Lo consulta el agente al inicia
 
 ## Estado actual
 - Fase: implementación (spec 001 aprobada el 27/10/2026).
-- Sistema de diseño: spec `specs/002-diseno-visual/spec.md` aprobada el 27/10/2026; agente `frontend-designer` y skill `glassmorphism-ui` creados.
-- Defensa: miércoles 28/10/2026, 14:00. APK instalado en un dispositivo requerido.
-- T-01 (proyecto base) completado: Expo SDK 57.0.31, TypeScript estricto, Expo Router, lint y typecheck pasan. Siguiente tarea: TD-01 (`specs/002-diseno-visual/tasks.md`) (tokens de diseño).
+- Sistema de diseño: spec `specs/002-diseno-visual/spec.md` aprobada y validada (TD-05 cerrada el 27/10/2026): typecheck y lint pasan, agente `frontend-designer` reporta «cumple» en RF-D-01 a RF-D-05.
+- T-11 (envío sin duplicados) completado: sync con uuid pre-check, NetInfo, StatusBadge en todas las pantallas, reset de "enviando" al iniciar. Typecheck y lint pasan (1 warning preexistente en `watch()`).
+- Siguiente tarea: T-12 (`specs/001-registro-lectura/tasks.md`) — verificación final y APK.
 
 ## Decisiones tomadas
 - ADR-001 a ADR-008 aceptados el 27/10/2026 (ver `docs/adr/`).

@@ -13,7 +13,10 @@
     },
     "android": {
       "package": "ec.edu.epn.epmaps.tracker",
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -22,13 +25,22 @@
       "expo-router",
       "expo-status-bar",
       "expo-sqlite",
-      ["expo-image-picker", {
-        "cameraPermission": "Necesitamos la cámara para fotografiar el medidor como respaldo de la lectura."
-      }]
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Necesitamos la cámara para fotografiar el medidor como respaldo de la lectura."
+        }
+      ],
+      "expo-secure-store"
     ],
-    
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "94ee3839-2db7-48bc-a862-3cba740333a8"
+      }
     }
   }
 }
